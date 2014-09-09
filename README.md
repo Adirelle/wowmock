@@ -11,7 +11,9 @@ wowmock has been designed to work with [luaunit 2.1](https://github.com/rjpcompu
 Usage
 -----
 
-wowmock allows you to load a Lua file into a controlled environnement using [setfenv](http://www.lua.org/manual/5.1/manual.html#pdf-setfenv). The code has access to standard Lua globals and some wow lua functions.
+wowmock allows you to load a Lua file into a controlled environnement using [setfenv](http://www.lua.org/manual/5.1/manual.html#pdf-setfenv). The code has access to standard Lua globals as well as a small subsets of [WoW Lua functions](http://wowpedia.org/Lua_functions) (most are not implemented yet).
+
+Most specific WoW API functions are *not* available, as they should be mocked.
 
 ```lua
 function wowmock(filepath, globals, ...)
