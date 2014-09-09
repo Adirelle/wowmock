@@ -1,14 +1,14 @@
 --[[
 wowmock - WoW environment mock
 Copyright 2014 Adirelle (adirelle@gmail.com)
-All rights reserved.
+See LICENSE for usage.
 --]]
 
 local wowlua = require('wowlua')
 
+local cache = {}
 
-return function(path, mock, ...)
-	local chunk = loadfile(path)
+return function(path, globals, ...)
 	local env = setmetatable({}, {
 		__index = function(self, name)
 			local value = wowlua[name]
@@ -19,6 +19,15 @@ return function(path, mock, ...)
 			return value
 		end
 	})
+	local chunk = cache[path]
+	if not chunk then
+		local msg
+		chunk, msg = loadfile(path)
+		if not chunk then
+			error(msg, 2)
+		end
+		cache[path] = chunk
+	end
 	setfenv(chunk, env)
 	return chunk(...)
 end
