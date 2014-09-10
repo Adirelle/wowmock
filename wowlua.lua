@@ -41,7 +41,7 @@ end
 local funcs = {
 	format = string.format,
 	gsub = string.gsub,
-	strsplit = strplit,
+	strsplit = strsplit,
 	strjoin = strjoin,
 	strconcat = strconcat,
 	tostringall = tostringall,
