@@ -59,6 +59,8 @@ local funcs = {
 	cos = function(degrees) return math.cos(math.rad(degrees)) end,
 	sin = function(degrees) return math.sin(math.rad(degrees)) end,
 	tan = function(degrees) return math.tan(math.rad(degrees)) end,
+
+	bit = require('bit')
 }
 
 for key, func in pairs(string) do
@@ -68,11 +70,6 @@ for key, func in pairs(math) do
 	if not funcs[key] then
 		funcs[key] = func
 	end
-end
-
-local ok, bit = pcall(require, "bit")
-if ok then
-	funcs.bit = bit
 end
 
 return setmetatable(funcs, { __index = _G })
