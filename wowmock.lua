@@ -9,16 +9,21 @@ local wowlua = require('wowlua')
 local cache = {}
 
 return function(path, globals, ...)
-	local env = setmetatable({}, {
-		__index = function(self, name)
-			local value = wowlua[name]
-			if value == nil then
-				value = globals[name]
+	local env = {}
+	if globals then
+		setmetatable({}, {
+			__index = function(self, name)
+				local value = wowlua[name]
+				if value == nil then
+					value = globals[name]
+				end
+				self[name] = value
+				return value
 			end
-			self[name] = value
-			return value
-		end
-	})
+		})
+	else
+		setmetatable({}, { __index = wowlua })
+	end
 	local chunk = cache[path]
 	if not chunk then
 		local msg
