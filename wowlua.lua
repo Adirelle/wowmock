@@ -64,6 +64,7 @@ local funcs = {
 
 	tinsert = table.insert,
 	tremove = table.remove,
+	tconcat = table.concat,
 	tContains = tContains,
 	tconcat = table.concat,
 	sort = table.sort,
