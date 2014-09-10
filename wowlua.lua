@@ -60,7 +60,7 @@ local funcs = {
 	sin = function(degrees) return math.sin(math.rad(degrees)) end,
 	tan = function(degrees) return math.tan(math.rad(degrees)) end,
 
-	bit = require('bit')
+	bit = assert(require('bit'), 'Either bitlib or luabitop is required.')
 }
 
 for key, func in pairs(string) do
