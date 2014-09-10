@@ -24,6 +24,7 @@ return function(path, globals, ...)
 	else
 		setmetatable(env, { __index = wowlua })
 	end
+	env._G = env
 	local chunk = cache[path]
 	if not chunk then
 		local msg
