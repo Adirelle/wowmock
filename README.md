@@ -3,6 +3,8 @@ wowmock
 
 WoW environment mock for unit testing.
 
+[![Build Status](https://travis-ci.org/Adirelle/wowmock.svg?branch=master)](https://travis-ci.org/Adirelle/wowmock)
+
 Dependencies
 ------------
 
