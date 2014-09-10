@@ -37,4 +37,11 @@ function tests:test_tostringall()
 	assertEquals({wowlua.tostringall("a", 5, false, true, nil)}, {"a", "5", "false", "true", "nil"})
 end
 
+function tests:test_strtrim()
+	assertEquals(wowlua.strtrim("  \n 	a 	 a  "), "a 	 a")
+	assertEquals(wowlua.strtrim("a 	 a  "), "a 	 a")
+	assertEquals(wowlua.strtrim("  \n 	a 	 a"), "a 	 a")
+	assertEquals(wowlua.strtrim("caaababacaa", "ac"), "bab")
+end
+
 os.exit(LuaUnit:Run())

@@ -38,17 +38,27 @@ local function tostringall(...)
 	end
 end
 
+local function strtrim(str, chars)
+	if not chars then
+		chars = " 	\r\n"
+	end
+	local re = '['..chars:gsub("([%]%.%^%-%%])", "%%%1")..']*'
+	return str:gsub('^'..re, ''):gsub(re..'$', '')
+end
+
 local funcs = {
 	format = string.format,
 	gsub = string.gsub,
 	strsplit = strsplit,
 	strjoin = strjoin,
 	strconcat = strconcat,
+	strtrim = strtrim,
 	tostringall = tostringall,
 
 	tinsert = table.insert,
 	tremove = table.remove,
 	tContains = tContains,
+	tconcat = table.concat,
 	sort = table.sort,
 	wipe = function(t) for k in pairs(t) do t[k] = nil end end,
 
