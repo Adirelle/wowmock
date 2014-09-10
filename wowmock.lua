@@ -11,7 +11,7 @@ local cache = {}
 return function(path, globals, ...)
 	local env = {}
 	if globals then
-		setmetatable({}, {
+		setmetatable(env, {
 			__index = function(self, name)
 				local value = wowlua[name]
 				if value == nil then
@@ -22,7 +22,7 @@ return function(path, globals, ...)
 			end
 		})
 	else
-		setmetatable({}, { __index = wowlua })
+		setmetatable(env, { __index = wowlua })
 	end
 	local chunk = cache[path]
 	if not chunk then
