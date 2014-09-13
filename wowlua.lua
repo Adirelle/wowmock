@@ -46,6 +46,13 @@ local function strtrim(str, chars)
 	return str:gsub('^'..re, ''):gsub(re..'$', '')
 end
 
+local function wipe(t)
+	for k in pairs(t) do
+		t[k] = nil
+	end
+	return t
+end
+
 local funcs = {
 	format = string.format,
 	gsub = string.gsub,
@@ -60,7 +67,7 @@ local funcs = {
 	tContains = tContains,
 	tconcat = table.concat,
 	sort = table.sort,
-	wipe = function(t) for k in pairs(t) do t[k] = nil end end,
+	wipe = wipe,
 
 	acos = function(value) return math.deg(math.acos(value)) end,
 	asin = function(value) return math.deg(math.asin(value)) end,

@@ -44,4 +44,17 @@ function tests:test_strtrim()
 	assertEquals(wowlua.strtrim("caaababacaa", "ac"), "bab")
 end
 
+function tests:test_wipe()
+	local t = {}
+	assertEquals(wowlua.wipe(t) == t, true)
+	table.insert(t, "bla")
+	assertEquals(#(wowlua.wipe(t)), 0)
+	t["foo"] = "bar"
+	assertEquals(next(wowlua.wipe(t)), nil)
+	local mt = {}
+	setmetatable(t, mt)
+	assertEquals(getmetatable(wowlua.wipe(t)) == mt, true)
+end
+
+
 os.exit(LuaUnit:Run())
