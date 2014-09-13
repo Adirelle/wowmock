@@ -1,9 +1,9 @@
 rockspec_format = "1.0"
 package = "wowmock"
-version = "master"
+version = "1.0-1"
 source = {
-	url = "https://github.com/Adirelle/wowmock/archive/master.zip",
-	dir = "wowmock-master"
+	url = "https://github.com/Adirelle/wowmock/archive/1.0-1.zip",
+	dir = "wowmock-1.0"
 }
 description = {
 	summary = "WoW environment mock for unit testing.",
